@@ -43,7 +43,7 @@ This project generates a team.html page in the output directory that displays th
 
 
 ## See it in Action
-* The Gif shows the application being used in the command line, when the user presses "Done", the application will take the information and generate it into an HTML page
+* The Gif shows the application being used in the command line, when the user presses "Done", the application will automatically generate it into the team.html file, as shown
 ![Gif](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/working%20commandline.gif)
 
 ## Screenshots
