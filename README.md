@@ -1,5 +1,5 @@
 # Employee Summary Homework
-This application will build an engineering team from the command line!
+This application will build an engineering team from the command line! 
 
 ## Summary
 In this template engine, a Node CLI will take in information about an employee and generate an HT"ML page
@@ -16,6 +16,7 @@ In this template engine, a Node CLI will take in information about an employee a
   * Used for collecting input from the user
  * Jestjs.io 
   * Used for running the provided tests
+ * Node to run the command-line
 
  ## Built With
  * Inquirer
@@ -25,23 +26,27 @@ In this template engine, a Node CLI will take in information about an employee a
  * HTML
 
 ## Minimum Requirements
-* Functional application.
-* GitHub repository with a unique name and a README describing the project.
-* User can use the CLI to generate an HTML page that displays information about their team.
-* All tests must pass.
+* Functional application
+* GitHub repository with a unique name and a README describing the project
+* User can use the CLI to generate an HTML page that displays information about their team
+* All tests must pass
 ![Picture](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/screenshot-test.png)
+* Classes: Employee, Manager, Engineer, Intern
+ * Each class will have set properties and methods
+ * See "lib" folder to view all classes and functions
+
+## Roster Output
+This project generates a team.html page in the output directory that displays the formated roster
+* What will be shown:
+ * Name
+ * Role
+ * ID
+ * Role-specific property (ex: school, link to GitHub profile, or office number)
 
 
-## How it Works
+## See it in Action
 ![Gif](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/working%20commandline.gif)
 
  ## Authors
  * Donna Nguyen
-
-
-* add screen shots
-* add gif
-* explain homework 
-* explain what was used
-* process
 
