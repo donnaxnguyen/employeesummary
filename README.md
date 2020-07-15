@@ -2,7 +2,7 @@
 This application will build an engineering team from the command line! 
 
 ## Summary
-In this template engine, a Node CLI will take in information about an employee and generate an HT"ML page
+In this template engine, a Node CLI will take in information about an employee and generate an HTML page
 
 ## Instructions
 * The User can input any number of team members
@@ -12,11 +12,9 @@ In this template engine, a Node CLI will take in information about an employee a
  * The application will create an HTML file that displays all the information that was provided by the user
 
  ## How it's Delivered
- * Inquirer npm package
-  * Used for collecting input from the user
- * Jestjs.io 
-  * Used for running the provided tests
- * Node to run the command-line
+ * Inquirer npm package - Used for collecting input from the user
+ * Jestjs.io - Used for running the provided tests
+ * Node - Used to run the command-line
 
  ## Built With
  * Inquirer
@@ -32,8 +30,8 @@ In this template engine, a Node CLI will take in information about an employee a
 * All tests must pass
 ![Picture](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/screenshot-test.png)
 * Classes: Employee, Manager, Engineer, Intern
- * Each class will have set properties and methods
- * See "lib" folder to view all classes and functions
+  * Each class will have set properties and methods
+  * See "lib" folder to view all classes and functions
 
 ## Roster Output
 This project generates a team.html page in the output directory that displays the formated roster
