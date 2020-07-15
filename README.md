@@ -11,18 +11,26 @@ In this template engine, a Node CLI will take in information about an employee a
 * When the User is done completing the team roster:
  * The application will create an HTML file that displays all the information that was provided by the user
 
- ## How it is Delivered
+ ## How it's Delivered
  * Inquirer npm package
   * Used for collecting input from the user
  * Jestjs.io 
   * Used for running the provided tests
 
- ## Built with
+ ## Built With
  * Inquirer
  * Jest
  * Javascript
  * Node
  * HTML
+
+## Minimum Requirements
+* Functional application.
+* GitHub repository with a unique name and a README describing the project.
+* User can use the CLI to generate an HTML page that displays information about their team.
+* All tests must pass.
+![Picture](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/screenshot-test.png)
+
 
 ## How it Works
 ![Gif](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/working%20commandline.gif)
