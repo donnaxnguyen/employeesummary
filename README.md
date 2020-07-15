@@ -44,6 +44,8 @@ This project generates a team.html page in the output directory that displays th
 
 ## See it in Action
 ![Gif](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/working%20commandline.gif)
+![Node](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/Screenshot-gif.png)
+![Team](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/OutputTeam.png)
 
  ## Authors
  * Donna Nguyen
