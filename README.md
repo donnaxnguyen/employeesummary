@@ -44,8 +44,13 @@ This project generates a team.html page in the output directory that displays th
 
 ## See it in Action
 ![Gif](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/working%20commandline.gif)
+* The Gif shows the application being used in the command line, when the user presses "Done", the application will take the information and generate it into an HTML page\
+
 ![Node](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/Screenshot-gif.png)
+* Close up view of the command line\
+
 ![Team](https://github.com/donnaxnguyen/employeesummary/blob/master/screenshots%20and%20team/OutputTeam.png)
+* Deployed HTML page, taken from team.html that is shown in the gif
 
  ## Authors
  * Donna Nguyen
