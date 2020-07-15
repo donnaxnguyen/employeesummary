@@ -9,28 +9,57 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./htmlRenderer");
+const render = require("./lib/htmlRenderer");
 
 
 const teamMember = [];
 
-function mainApp() {
+
+function getUserInput() {
+    inquirer.prompt([
+        {
+        type:"list",
+        message: "What member would you like to make?",
+        name: "createdEmployee",
+        choices: ["Manager", "Engineer", "Intern", "Done"]
+        },
+    ])
+    .then(teamMember => {
+        switch(teamMember.createdEmployee) {
+            case "Engineer":
+                engineer();
+                break;
+            case "Manager":
+                manager();
+                break;
+            case "Intern":
+                intern();
+                break;
+            case "Done":
+                createTeam();
+                break;
+        }
+    })
+
+}
+
+function manager() {
     // create a manager
     inquirer
         .prompt([
             {
                 type: "input",
-                name: "name",
+                name: "managerName",
                 message: "What is the Managers name?"
             },
             {
                 type: "input",
-                name: "id",
+                name: "employeeId",
                 message: "What is the Managers id?"
             },
             {
                 type: "input",
-                name: "email",
+                name: "managerEmail",
                 message: "What is the Managers email?"
             },
             {
@@ -39,125 +68,134 @@ function mainApp() {
                 message: "What is the Managers office number?"
             }
         ])
-        .then(answers => {
-            var { name, id, email, officeNumber } = answers;
-            var manager = Manager(name, id, email, officeNumber);
-            
+        .then(function(response) {
+            let managerName = response.managerName;
+            let managerId = response.managerId;
+            let managerEmail = response.managerEmail;
+            let managerOffice = response.managerOffice;
+
+            let manager = new Manager (
+                managerName, 
+                managerId,
+                managerEmail,
+                managerOffice
+            );
+                
             //Adds the manager to the team array
             teamMember.push(manager);
 
             //Initiates the prompt to ask for more team members
-            createTeam();
+            getUserInput();
             
-        })
+        });
 
 }
 // this function create a list to add teammembers
-function createTeam() {
-
-    inquirer
-        .prompt([
-        {
-            type: "list",
-            name: "command",
-            message:"Would you like to add more team members?",
-            choices:["Add an Engineer", "Add an Intern", "Make team"]
-        }
-        ])
-        .then(answers => {
-            // create a switch statement to choose between engineer, intern, or build team
-            statement = answers.command;
-
-            switch(statement){
-                case "Add an Engineer":
-                    getEngineer();
-                    break;
-
-                case "Add an Intern":
-                    getIntern();
-                    break;
-
-                case "Make team":
-                    buildTeam();
-                    break;
-            }
-        })
-}
-
-// a function that create an engineer
-function getEngineer() {
-
+function engineer() {
     inquirer
         .prompt([
             {
                 type: "input",
-                name: "name",
+                name: "engineerName",
                 message: "What is the Engineers name?"
             },
             {
                 type: "input",
-                name: "id",
+                name: "engineerId",
                 message: "What is the Engineers id?"
             },
             {
                 type: "input",
-                name: "email",
+                name: "engineerEmail",
                 message: "What is the Engineers email?"
             },
             {
                 type: "input",
-                name: "github",
+                name: "engineerGithub",
                 message: "What is the Engineers github username?"
             }
 
         ])
-        .then(answers => {
-            var {name, id, email, github} = answers;
-            var engineer = Engineer(name, id, email, github);
+        .then(function(response) {
+            let engineerName = response.engineerName;
+            let engineerId = response.engineerId;
+            let engineerEmail = response.engineerEmail;
+            let engineerGithub = response.engineerGithub;
+
+            let engineer = new Engineer (
+               engineerName,
+               engineerId,
+               engineerEmail,
+               engineerGithub
+            );
+    
+            //Adds the engineer to the team array
             teamMember.push(engineer);
-        })
+
+            //Initiates the prompt to ask for more team members
+            getUserInput();
+            
+        });
 
 }
+
 // a function that create an intern
-function getIntern() {
+function intern() {
 
     inquirer
         .prompt([
             {
                 type: "input",
-                name: "name",
+                name: "internName",
                 message: "What is the Interns name?"
             },
             {
                 type: "input",
-                name: "id",
+                name: "internId",
                 message: "What is the Interns id?"
             },
             {
                 type: "input",
-                name: "email",
+                name: "internEmail",
                 message: "What is the Interns email?"
             },
             {
                 type: "input",
-                name: "school",
+                name: "internSchool",
                 message: "What is the Intern's school name?"
             }
 
         ])
-        .then(answers => {
-            var {name, id, email, school} = answers;
-            var intern = Intern(name, id, email, school);
+        .then(function(response) {
+    let internName = response.internName;
+    let internId = response.internId;
+    let internEmail = response.internEmail;
+    let internSchool = response.internGithub;
 
-        })
+    let intern = new Intern (
+       internName,
+       internId,
+       internEmail,
+       internSchool
+    );
+
+    //Adds the intern to the team array
+    teamMember.push(intern);
+
+    //Initiates the prompt to ask for more team members
+    getUserInput();
+    
+})
 
 }
 
-function buildTeam() {
-    fs.writeFileSync(outputPath, mainRender(teamMember), "utf-8");
+function createTeam() {
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, render(teamMember), "utf-8")
 }
-
-mainApp()
+getUserInput();
 
 
 // After you have your html, you're now ready to create an HTML file using the HTML
@@ -165,13 +203,3 @@ mainApp()
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
